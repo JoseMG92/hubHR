@@ -1,10 +1,15 @@
 from django.db import models
+from authentication.models import Users
+from django.db.models.deletion import DO_NOTHING
 
 # Create your models here.
-class StatusUser():
+class StatusUser(models.Model):
     status = models.CharField(max_length=20)
+    
+    def __str__(self):
+        return self.status
 
-class Contrato():
+class Contrato(models.Model):
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)
     rfc = models.CharField(max_length=13)
@@ -13,13 +18,20 @@ class Contrato():
     start_date = models.TimeField()
     duration = models.DateField()
 
-class Country():
+    def __str__(self):
+        return self.first_name
+
+class Country(models.Model):
     country_colleague = models.CharField(max_length=50)
+    def __str__(self):
+        return self.country_colleague
 
-class JobTitle():
+class JobTitle(models.Model):
     job_title = models.CharField(max_length=50)
+    def __str__(self):
+        return self.job_title
 
-class Colleagues():
+class Colleagues(models.Model):
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=30)
     email = models.EmailField(max_length=150, unique=True)
@@ -30,7 +42,7 @@ class Colleagues():
     modified = models.DateTimeField(auto_now=True)
     
     #Llaves fóraneas a tablas: contrato, country, status y job_title
-    contrato_id = models.ForeignKey(Contrato, on_delete=models.CASCADE)
+    contrato = models.ForeignKey(Contrato, on_delete=models.CASCADE)
     country_id = models.ForeignKey(Country, on_delete=models.CASCADE)
     status_id = models.ForeignKey(StatusUser, on_delete=models.CASCADE)
     job_title_id = models.ForeignKey(JobTitle, on_delete=models.CASCADE)
