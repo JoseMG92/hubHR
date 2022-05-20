@@ -1,9 +1,8 @@
 from django.db import models
-from authentication.models import Users
 from django.db.models.deletion import DO_NOTHING
 
 # Create your models here.
-#UserStatus
+
 class UserStatus(models.Model):
     status = models.CharField(max_length=20)
     
@@ -20,7 +19,7 @@ class JobTitle(models.Model):
     def __str__(self):
         return self.job_title
 
-#Contracts
+
 class Contracts(models.Model):
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)
@@ -33,7 +32,7 @@ class Contracts(models.Model):
     def __str__(self):
         return self.first_name
 
-#Associates colleagues
+
 class Associates(models.Model):
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=30)
