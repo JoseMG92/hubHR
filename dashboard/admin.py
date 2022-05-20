@@ -1,12 +1,12 @@
 from django.contrib import admin
 #from django.contrib.auth.admin import UserAdmin
-from .models import StatusUser, Contrato, Country, JobTitle, Colleagues
+from .models import UserStatus, Contracts, Country, JobTitle, Associates
 from django.contrib.auth import get_user_model
 
 # Register your models here.
 
-admin.site.register(StatusUser)
-admin.site.register(Contrato)
+admin.site.register(UserStatus)
+admin.site.register(Contracts)
 admin.site.register(Country)
 admin.site.register(JobTitle)
-admin.site.register(Colleagues)
+admin.site.register(Associates)
