@@ -9,10 +9,16 @@ class UserStatus(models.Model):
     def __str__(self):
         return self.status
 
-class Country(models.Model):
-    country_colleague = models.CharField(max_length=50)
+class Sex(models.Model):
+    sex = models.CharField(max_length=20)
+    
     def __str__(self):
-        return self.country_colleague
+        return self.sex
+
+class Country(models.Model):
+    country = models.CharField(max_length=50)
+    def __str__(self):
+        return self.country
 
 class JobTitle(models.Model):
     job_title = models.CharField(max_length=50)
@@ -46,9 +52,9 @@ class Associates(models.Model):
     #Llaves fóraneas a tablas: contrato, country, status y job_title
     #contract
     contract = models.ForeignKey(Contracts, on_delete=models.CASCADE)
-    country_id = models.ForeignKey(Country, on_delete=models.CASCADE)
-    status_id = models.ForeignKey(UserStatus, on_delete=models.CASCADE)
-    job_title_id = models.ForeignKey(JobTitle, on_delete=models.CASCADE)
-
+    country= models.ForeignKey(Country, on_delete=models.CASCADE)
+    status = models.ForeignKey(UserStatus, on_delete=models.CASCADE)
+    job_title = models.ForeignKey(JobTitle, on_delete=models.CASCADE)
+    sex = models.ForeignKey(Sex, on_delete=models.CASCADE, null=True)
     def __str__(self):
         return f'{self.first_name} {self.last_name}'

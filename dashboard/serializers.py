@@ -5,6 +5,6 @@ from dashboard.models import Associates
 class AssociateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Associates
-        fields = ('first_name', 'last_name','email', 'rfc', 'curp', 'interbank_key','contract','country_id','status_id','job_title_id')
+        fields = ('first_name', 'last_name','email', 'rfc', 'curp','sex', 'interbank_key','contract','country','status','job_title')
 
  
