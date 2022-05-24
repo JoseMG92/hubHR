@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from dashboard.models import Country, Sex, UserStatus, Associates
+from dashboard.models import Associates
 from dashboard.serializers import CountrySerializer, SexSerializer, StatusSerializer, AssociateSerializer
 import json
 from rest_framework import generics
@@ -19,13 +19,13 @@ class CountryGet(generics.ListAPIView):
         return queryset
 
 
-class SexGet(generics.ListAPIView):
+class GenderGet(generics.ListAPIView):
     queryset = Associates.objects.all()
     serializer_class = AssociateSerializer
 
     def get_queryset(self):
-        sex = self.request.query_params.get('sex')
-        queryset = Associates.objects.filter(sex = sex)
+        gender = self.request.query_params.get('gender')
+        queryset = Associates.objects.filter(gender = gender)
         return queryset
 
 

@@ -10,11 +10,11 @@ class UserStatus(models.Model):
     def __str__(self):
         return self.status
 
-class Sex(models.Model):
-    sex = models.CharField(max_length=20)
+class Gender(models.Model):
+    gender = models.CharField(max_length=20)
     
     def __str__(self):
-        return self.sex
+        return self.gender
 
 class Country(models.Model):
     country = models.CharField(max_length=50)
@@ -56,6 +56,6 @@ class Associates(models.Model):
     country= models.ForeignKey(Country, on_delete=models.CASCADE)
     status = models.ForeignKey(UserStatus, on_delete=models.CASCADE)
     job_title = models.ForeignKey(JobTitle, on_delete=models.CASCADE)
-    sex = models.ForeignKey(Sex, on_delete=models.CASCADE, null=True)
+    gender = models.ForeignKey(Gender, on_delete=models.CASCADE, null=True)
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
